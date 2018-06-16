@@ -1,0 +1,260 @@
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  position: relative;
+  font-family: 微軟正黑體;
+}
+html{
+  background-color: #BBDDFF;
+  position: relative;
+}
+a{
+  text-decoration: none;
+  color: #FF6666;
+  font-size: 20px;
+}
+div{
+  font-family: 微軟正黑體;
+}
+p{
+  font-family: 微軟正黑體;
+  display: inline-block;
+}
+li{
+  list-style-type: none;
+}
+#top{
+  position: fixed;
+  width: 100%;
+  height: 92px;
+  background-color: #000077;
+  color: #FFFFFF;
+  z-index: 112;
+}
+#logo{
+  position: absolute;
+  display: inline-block;
+  margin: 0px auto;
+  float: left;
+}
+#logo p{
+  font-size: 36px;
+  color: #FFFFFF;
+  margin: 24px 78px;
+}
+.clearfix{
+  float: none;
+}
+#topNav{
+  position: absolute;
+  display: inline-block;
+  width: 500px;
+  height: 90px;
+  right: 10%;
+}
+.nav1, .nav2{
+  position: relative;
+  display: block;
+  padding: 15px 25px;
+  float: left;
+  width: 250px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.nav-title{
+  position: relative;
+  display: block;
+  font-size: 20px;
+  margin: 5px auto;
+  color: #BBDDFF;
+}
+.nav1 select{
+  border: 0px;
+  font-size: 14px;
+  width: 140px;
+  height: 30px;
+  padding: 0px 5px;
+}
+.nav2 .nav-title p{
+  font-size: 14px;
+}
+.checkbox{
+  width: 16px;
+  height: 16px;
+  margin: 0px 2px;
+}
+#btn-submit{
+  display: inline-block;
+  margin: 0px 5px;
+}
+#btn-submit:active, #btn-submit:hover{
+  color: #BBDDFF;
+}
+#show-result-num{
+  position: absolute;
+  width: 930px;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 35px;
+  color: #000077;
+}
+#show-result-num p{
+  font-size: 40px;
+  color: #FF6666;
+}
+#show-result-detail{
+  position: absolute;
+  top: 100px;
+  display: block;
+  border: 0px;
+  width: 930px;
+  height: 930px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 60px 0px;
+  padding: 0px 10px;
+}
+#show-result{
+  position: absolute;
+  display: block;
+  width: 930px;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 50px 0px;
+}
+.image img{
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
+.image img:hover{
+  height: 350px;
+  overflow: hidden;
+  -webkit-transition: height 1s; /* Safari */
+  transition: height 1s;
+  z-index: 10;
+}
+.content{
+  display: inline-block;
+  width: 300px;
+  margin: 15px 5px;
+}
+.firstLine{
+  display: block;
+  padding: 2px 0px;
+}
+.contentAddress{
+  display: inline-block;
+  color: #777777;
+  font-size: 20px;
+  margin: 5px 0px;
+}
+.contentName{
+  display: inline-block;
+  color: #000077;
+  font-size: 30px;
+  margin: 5px 0px;
+}
+.contentTotalDescription{
+  width: 900px;
+  font-size: 20px;
+  margin: 5px 0px;
+}
+.contentWebsite{
+  display: block;
+  margin: 5px 0px;
+}
+.contentWebsite a:hover{
+  color: #FF0000;
+}
+.contentDescription{
+  display: block;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 24px;
+  height: 2 * 24;
+}
+.contentTicket{
+  display: inline-block;
+  color: #777777;
+  font-size: 14px;
+}
+.secondLine{
+  padding: 2px 0px;
+}
+.thirdLine{
+  position: relative;
+  padding: 2px 0px;
+  float: left;
+  width: 300px;
+}
+.thirdLine input{
+  position: absolute;
+  right: 5px;
+  bottom: -10px;
+}
+.contentOpenTime{
+  display: inline-block;
+  color: #777777;
+  font-size: 14px;
+}
+#show-result-detail .contentTicket{
+  display: inline-block;
+  color: #777777;
+  font-size: 20px;
+  margin: 0px 5px;
+  color: #FF6666;
+}
+#show-result-detail .contentAddress{
+  display: inline-block;
+  color: #777777;
+  font-size: 20px;
+  margin: 0px 5px;
+  color: #FF6666;
+}
+#show-result-detail .contentOpenTime{
+  display: block;
+  color: #FF6666;
+  font-size: 20px;
+  margin: 5px 0px;
+}
+.contentTelephone{
+  display: block;
+  font-size: 20px;
+  margin: 5px 0px;
+  color: #FF6666;
+}
+.contentToBack input{
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  font-size: 20px;
+  right: 0px;
+  bottom: 0px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #000077;
+  color: #FFFFFF;
+}
+.contentToBack input:hover{
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000000;
+}
+.todetail{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.todetail:hover, .todetail:active{
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  color: #FF6666;
+}
