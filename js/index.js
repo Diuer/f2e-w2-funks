@@ -5,10 +5,10 @@ var btnSubmit=document.getElementById("btn-submit");
 var conditionFree=document.getElementById("checkbox-free");
 var conditionAllDay=document.getElementById("checkbox-allday");
 var atlocation=document.getElementById("atlocation");
-var result="";
 var str;
-var arrA=[];
-var arrB=[];
+var arrA=[]; //copy requests' data
+var arrB=[]; //filter's data
+var arrbranch=[];//for branch
 
 function init(){
 	const oReq = new XMLHttpRequest();
@@ -25,7 +25,7 @@ function render(){
 		str+="<div class='content' onclick='showdetail("+i+")'><div class='image'><img src='"+arrB[i].Picture1+"' alt='"+arrB[i].Picdescribe1+"'></div><div class='firstLine'><p class='contentName'>"+arrB[i].Name+"</p><p class='contentTicket'>"+arrB[i].Ticketinfo+"</p></div><div class='secondLine'><p class='contentDescription'>"+arrB[i].Toldescribe+"</p></div><div class='thirdLine'><p class='contentOpenTime'>"+arrB[i].Opentime+"</p></div></div>";
 	}
 	showResult.innerHTML=str;
-	showResultNum.innerHTML="Showing <p>"+arrB.length+"</p> results by…";
+	showResultNum.innerHTML="<i class='fa fa-quote-right' aria-hidden='true'></i> Showing <p>"+arrB.length+"</p> results by…";
 }
 function filterItem(arr){
 	if(atlocation.options[atlocation.selectedIndex].text==="全部"){
@@ -60,14 +60,59 @@ function filterItem(arr){
 }
 function reqListener() {
 	const data = JSON.parse(this.responseText);
-	str="";
 	showResultNum.innerHTML="處理中，請稍後";
+	// alert(Math.floor(data.result.records.length/50));
+	for(var j=0;i<Math.floor(data.result.records.length/50);j++){
+		alert(Math.floor(data.result.records.length/50));
+		var pagesa=document.createElement('a');
+		pagesa.setAttribute('href','#');
+		pagesa.innerHTML=j;
+		document.querySelector(".pagesbtn").appendChild(pagesa);
+	}
 	for(var i=0;i<data.result.records.length;i++){
 		arrA[i]=data.result.records[i];
-		str+="<div class='content' onclick='showdetail("+i+")'><div class='image'><img src='"+arrA[i].Picture1+"' alt='"+arrA[i].Picdescribe1+"'></div><div class='firstLine'><p class='contentName'>"+arrA[i].Name+"</p><p class='contentTicket'>"+arrA[i].Ticketinfo+"</p></div><div class='secondLine'><p class='contentDescription'>"+arrA[i].Toldescribe+"</p></div><div class='thirdLine'><p class='contentOpenTime'>"+arrA[i].Opentime+"</p></div></div>"
+		arrB[i]=data.result.records[i];
+	    divcontent=document.createElement('div');
+	    divcontent.setAttribute('class','content');
+	    divcontent.setAttribute('onclick','showdetail('+i+')');
+
+	    var divimg = document.createElement('div');
+		divimg.setAttribute('class','image');
+		var img=document.createElement('img');
+		img.setAttribute('src',arrA[i].Picture1);
+		divimg.appendChild(img);
+		divcontent.appendChild(divimg);
+
+		var divfirst=document.createElement('div');
+		divfirst.setAttribute('class','firstLine');
+		var firstp1=document.createElement('p');
+		firstp1.setAttribute('class','contentName');
+		firstp1.innerHTML=arrA[i].Name;
+		var firstp2=document.createElement('p');
+		firstp2.setAttribute('class','contentTicket');
+		firstp2.innerHTML=arrA[i].Ticketinfo;
+		divfirst.appendChild(firstp1);
+		divfirst.appendChild(firstp2);
+		divcontent.appendChild(divfirst);
+
+		var divsecond=document.createElement('div');
+		divsecond.setAttribute('class','secondLine');
+		var secondp=document.createElement('p');
+		secondp.setAttribute('class','contentDescription');
+		secondp.innerHTML=arrA[i].Toldescribe;
+		divsecond.appendChild(secondp);
+		divcontent.appendChild(divsecond);
+
+		var divthird=document.createElement('div');
+		divthird.setAttribute('class','thirdLine');
+		var thirdp=document.createElement('p');
+		thirdp.setAttribute('class','contentOpenTime');
+		thirdp.innerHTML=arrA[i].Opentime;
+		divthird.appendChild(thirdp);
+		divcontent.appendChild(divthird);
+		showResult.appendChild(divcontent);
 	}
-	showResultNum.innerHTML="Showing <p>"+arrA.length+"</p> results by…";
-	showResult.innerHTML=str;
+	showResultNum.innerHTML="<i class='fa fa-quote-right' aria-hidden='true'></i> Showing <p>"+arrA.length+"</p> results by…";
 }
 function reqError(err) {
 	console.log('Fetch Error :-S', err);
@@ -82,7 +127,7 @@ function showdetail(i){
 	showResult.style.display="none";
 	showResultNum.style.display="none";
 	showResultDetail.style.display = "block";
-	showResultDetail.innerHTML="<img src='"+arrA[i].Picture1+"' alt='"+arrA[i].Picdescribe1+"' width='900px'><div class='contentName'><p>"+arrA[i].Name+"</p><p class='contentTicket'>"+arrA[i].Ticketinfo+"</p></div><div class='contentAddress'><p>"+arrA[i].Add+"</p></div><div class='contentTotalDescription'><p>"+arrA[i].Toldescribe+"</p></div><div class='contentOpenTime'><p>"+arrA[i].Opentime+"</p></div><div class='contentTelephone'><p>"+arrA[i].Tel+"</p></div><div class='contentWebsite'><a href='"+arrA[i].Website+"'>官方網頁</a></div><div class='contentToBack'><input type='button' value='回上一頁' onclick='showtotal()'></div>";
+	showResultDetail.innerHTML="<img src='"+arrB[i].Picture1+"' alt='"+arrB[i].Picdescribe1+"' width='900px'><div class='contentName'><p>"+arrB[i].Name+"</p></div><div class='contentTicket'><p>"+arrB[i].Ticketinfo+"</p></div><div class='contentAddress'><p>"+arrB[i].Add+"</p></div><div class='contentTotalDescription'><p>"+arrB[i].Toldescribe+"</p></div><div class='contentOpenTime'><i class='fa fa-clock-o' aria-hidden='true'></i><p>"+arrB[i].Opentime+"</p></div><div class='contentTelephone'><i class='fa fa-phone' aria-hidden='true'></i><p>"+arrB[i].Tel+"</p></div><div class='contentWebsite'><a href='"+arrB[i].Website+"'><i class='fa fa-link' aria-hidden='true'></i>官方網頁</a></div><div class='contentToBack'><input type='button' value='回上一頁' onclick='showtotal()'></div>";
 }
 
 atlocation.addEventListener('click',function(){
