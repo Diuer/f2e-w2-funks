@@ -5,6 +5,9 @@
   position: relative;
   font-family: 微軟正黑體;
 }
+input{
+  font-family: 微軟正黑體;
+}
 html{
   background-color: #BBDDFF;
   position: relative;
@@ -20,6 +23,10 @@ div{
 p{
   font-family: 微軟正黑體;
   display: inline-block;
+}
+i{
+  width: 30px;
+  color: rgba(0,0,119,0.8);
 }
 li{
   list-style-type: none;
@@ -62,6 +69,14 @@ li{
   top: 50%;
   transform: translateY(-50%);
 }
+.nav1 select{
+  border: 0px;
+  font-size: 18px;
+  font-family: 微軟正黑體;
+  width: 140px;
+  height: 30px;
+  padding: 0px 5px;
+}
 .nav-title{
   position: relative;
   display: block;
@@ -69,27 +84,10 @@ li{
   margin: 5px auto;
   color: #BBDDFF;
 }
-.nav1 select{
-  border: 0px;
-  font-size: 14px;
-  width: 140px;
-  height: 30px;
-  padding: 0px 5px;
-}
-.nav2 .nav-title p{
-  font-size: 14px;
-}
 .checkbox{
   width: 16px;
   height: 16px;
   margin: 0px 2px;
-}
-#btn-submit{
-  display: inline-block;
-  margin: 0px 5px;
-}
-#btn-submit:active, #btn-submit:hover{
-  color: #BBDDFF;
 }
 #show-result-num{
   position: absolute;
@@ -125,25 +123,28 @@ li{
   transform: translateX(-50%);
   margin: 50px 0px;
 }
+.image{
+  overflow: hidden;
+  border-radius: 20px;
+}
 .image img{
   width: 300px;
   height: 300px;
-  border-radius: 20px;
 }
 .image img:hover{
-  height: 350px;
-  overflow: hidden;
-  -webkit-transition: height 1s; /* Safari */
-  transition: height 1s;
+  -webkit-transform: scale(1.5); /* Safari */
+  transform: scale(1.5);
+  transition:all 1s;
 }
 .content{
+  padding: 2px;
   display: inline-block;
   width: 300px;
   margin: 15px 5px;
 }
 .content:hover{
-  background-color: #EEEEEE;
   border-radius: 20px;
+  box-shadow:4px 4px 12px 4px rgba(20%,20%,40%,0.5);
 }
 .firstLine{
   display: block;
@@ -151,19 +152,14 @@ li{
 }
 .contentAddress{
   display: inline-block;
-  color: #777777;
+  color: #FF6666;
   font-size: 20px;
   margin: 5px 0px;
 }
 .contentName{
   display: inline-block;
-  color: #000077;
+  color: #0000FF;
   font-size: 30px;
-  margin: 5px 0px;
-}
-.contentTotalDescription{
-  width: 900px;
-  font-size: 20px;
   margin: 5px 0px;
 }
 .contentWebsite{
@@ -172,6 +168,7 @@ li{
 }
 .contentWebsite a:hover{
   color: #FF0000;
+  font-weight: bold;
 }
 .contentDescription{
   display: block;
@@ -179,13 +176,20 @@ li{
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 30px;
   height: 2 * 24;
 }
 .contentTicket{
   display: inline-block;
-  color: #777777;
+  color: #0000BB;
   font-size: 14px;
+}
+.contentOpenTime{
+  display: inline-block;
+  color: #0000BB;
+  font-size: 16px;
+  line-height: 30px;
 }
 .secondLine{
   padding: 2px 0px;
@@ -201,11 +205,6 @@ li{
   right: 5px;
   bottom: -10px;
 }
-.contentOpenTime{
-  display: inline-block;
-  color: #777777;
-  font-size: 14px;
-}
 #show-result-detail .contentTicket{
   display: inline-block;
   color: #777777;
@@ -215,7 +214,6 @@ li{
 }
 #show-result-detail .contentAddress{
   display: inline-block;
-  color: #777777;
   font-size: 20px;
   margin: 0px 5px;
   color: #FF6666;
@@ -226,20 +224,27 @@ li{
   font-size: 20px;
   margin: 5px 0px;
 }
+#show-result-detail .contentTotalDescription{
+  width: 900px;
+  font-size: 20px;
+  margin: 5px 0px;
+  line-height: 30px;
+}
 .contentTelephone{
   display: block;
   font-size: 20px;
   margin: 5px 0px;
   color: #FF6666;
 }
+.contentToBack{
+  position: relative;
+  width: 100px;
+  margin: 5px 0 5px auto;
+}
 .contentToBack input{
-  position: absolute;
-  display: inline-block;
   width: 100px;
   height: 30px;
   font-size: 20px;
-  right: 0px;
-  bottom: 0px;
   border: 0px;
   border-radius: 5px;
   background-color: #000077;
